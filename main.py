@@ -13,7 +13,7 @@ pygame.init()
 screen_color = (44, 44, 127) # Black, dark-blue = (44, 44, 127)
 
 # Configuramos el tamaño de la ventana del juego
-screen = pygame.display.set_mode((400, 800))
+screen = pygame.display.set_mode((300, 600))
 
 # Establecemos el título de la ventana (aparece en la barra superior)
 pygame.display.set_caption("Python Tetris")
@@ -39,6 +39,8 @@ while True:
 
     # Drawing screen fill
     screen.fill(screen_color)
+    gg.draw(screen) # cambia el color del background/screen
+
 
     # Actualizamos la pantalla para mostrar cualquier cambio realizado en la ventana
     pygame.display.update()

@@ -1,0 +1,23 @@
+# Entornos virtuales
+venv/
+.env/
+.envrc
+
+# Archivos de Python compilados
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Archivos temporales VSCode
+.vscode/
+*.code-workspace
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de log o caché
+*.log
+*.cache
+*.tmp

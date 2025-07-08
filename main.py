@@ -4,6 +4,7 @@
 # pygame: para crear el juego y manejar gráficos, eventos, etc.
 # sys: para poder cerrar el programa completamente
 import pygame, sys
+from grid import Grid
 
 # Inicializamos todos los módulos de Pygame
 pygame.init()
@@ -19,6 +20,10 @@ pygame.display.set_caption("Python Tetris")
 
 # Creamos un reloj para controlar la velocidad del juego (FPS)
 clock = pygame.time.Clock()
+
+# Creamos instancia a Grid:
+gg = Grid()
+gg.print_grid()
 
 # Loop principal del juego:
 # Se ejecuta constantemente hasta que el usuario cierre la ventana

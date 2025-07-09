@@ -28,8 +28,8 @@ gg = Grid()
 gg.print_grid()
 
 # Creamos el obj Blocks, para probar si se dibujan:
-block = OBlock()
-block.move(4,3) # Movemos el block a otra posicion
+block = IBlock()
+# block.move(4,3) # Movemos el block a otra posicion
 # block = ZBlock()
 
 

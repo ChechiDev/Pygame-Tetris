@@ -16,7 +16,7 @@ class Block:
 
 
     def move(self, rows, cols):
-        """ Move the block by a given number of rows and columns """
+        """ Move the block by a given (arg) number of rows and columns """
 
         self._row_offset += rows
         self._col_offset += cols

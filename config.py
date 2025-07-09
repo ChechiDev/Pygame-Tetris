@@ -1,0 +1,3 @@
+SCREEN_WIDTH = 300
+SCREEN_HEIGHT = 600
+BACKGROUND_COLOR = (44, 44, 127)  # or (26, 31, 40) for dark grey

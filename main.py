@@ -4,19 +4,16 @@
 # pygame: para crear el juego y manejar gráficos, eventos, etc.
 # sys: para poder cerrar el programa completamente
 import pygame, sys
+from config import *
 from game import Game
 
 # Inicializamos todos los módulos de Pygame
 pygame.init()
 
-# Game colors:
-screen_color = (44, 44, 127) # Black, dark-blue = (44, 44, 127), dark-grey (26, 31, 40)
-
-# Configuramos el tamaño de la ventana del juego
-screen = pygame.display.set_mode((300, 600))
-
 # Establecemos el título de la ventana (aparece en la barra superior)
 pygame.display.set_caption("Python Tetris")
+# Configuramos el tamaño de la ventana del juego
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # Creamos un reloj para controlar la velocidad del juego (FPS)
 clock = pygame.time.Clock()
@@ -34,10 +31,21 @@ while True:
             # Salimos completamente del programa
             sys.exit()
 
-    # Drawing screen fill
-    screen.fill(screen_color)
-    game.draw(screen)
+        # Configuramos el movimiento (arrow keys)
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                game.move_left()
 
+            if event.key == pygame.K_RIGHT:
+                game.move_right()
+
+            if event.key == pygame.K_DOWN:
+                game.move_down()
+
+
+    # Drawing screen fill
+    screen.fill(BACKGROUND_COLOR)
+    game.draw(screen)
 
     # Actualizamos la pantalla para mostrar cualquier cambio realizado en la ventana
     pygame.display.update()

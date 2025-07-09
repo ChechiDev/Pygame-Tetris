@@ -38,7 +38,20 @@ class Game():
         return block
 
 
-    def draw(self, screen):
+    def move_left(self):
+        """ Move the current block one cell to the left """
+        self._current_block.move(0, -1)
 
+    def move_right(self):
+        """ Move the current block one cell to the right """
+        self._current_block.move(0, 1)
+
+    def move_down(self):
+        """ Move the current block one cell down """
+        self._current_block.move(1, 0)
+
+
+    def draw(self, screen):
+        """ Draw the grid and the current block on the given screen surface """
         self._grid.draw(screen)
         self._current_block.draw(screen)

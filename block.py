@@ -1,5 +1,6 @@
 # block.py
 
+import pygame
 from colors import Colors
 
 class Block:
@@ -12,27 +13,20 @@ class Block:
 
     # Metodo que se encargará de dibujar los blocks de las subclase:
     def draw(self, screen):
-        slot = self._cells[self._rotation]
+        slots = self._cells[self._rotation]
 
+        # Generamos el cuadrado de la celda
+        for slot in slots:
+            slot_rect = pygame.Rect(
+                slot._col * self._cell_size + 1,
+                slot._row * self._cell_size + 1,
+                self._cell_size - 1,
+                self._cell_size - 1
+            )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-if __name__ == "__main__":
-    pass
-    # b = Block()
-    # print(b._colors)
+            # Dibujamos la celda:
+            pygame.draw.rect(
+                screen, # Fondo
+                self._colors[self._id], # color del id block
+                slot_rect # Dibujamos el cuadrado
+                )

@@ -5,6 +5,7 @@
 # sys: para poder cerrar el programa completamente
 import pygame, sys
 from grid import Grid
+from blocks import *
 
 # Inicializamos todos los módulos de Pygame
 pygame.init()
@@ -23,19 +24,11 @@ clock = pygame.time.Clock()
 
 # Creamos instancia a Grid:
 gg = Grid()
-
-# Test del grid para ver si los index cambian el color:
-# gg._grid[0][0] = 1
-# gg._grid[3][5] = 4
-# gg._grid[17][8] = 7
-
-
-
-
-
-
-
 gg.print_grid()
+
+# Creamos el obj Blocks, para probar si se dibujan:
+block = SBlock()
+# block = ZBlock()
 
 
 # Loop principal del juego:
@@ -53,7 +46,7 @@ while True:
     # Drawing screen fill
     screen.fill(screen_color)
     gg.draw(screen) # cambia el color del background/screen
-
+    block.draw(screen)
 
     # Actualizamos la pantalla para mostrar cualquier cambio realizado en la ventana
     pygame.display.update()

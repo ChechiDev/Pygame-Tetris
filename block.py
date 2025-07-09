@@ -2,18 +2,44 @@
 
 import pygame
 from colors import Colors
+from position import Position
 
 class Block:
     def __init__(self, id):
         self._id = id
         self._cells = {}
         self._cell_size = 30
+        self._row_offset = 0
+        self._col_offset = 0
         self._rotation = 0
         self._colors = Colors.get_cell_colors()
 
+
+    def move(self, rows, cols):
+        """ Move the block by a given number of rows and columns """
+
+        self._row_offset += rows
+        self._col_offset += cols
+
+
+    def get_cell_position(self):
+        """ Get the current cell positions for the block's rotation """
+        slot = self._cells[self._rotation]
+        moved_pos = []
+
+        for pos in slot:
+            pos = Position(
+                pos._row + self._row_offset,
+                pos._col + self._col_offset
+                )
+            moved_pos.append(pos)
+
+        return moved_pos
+
+
     # Metodo que se encargará de dibujar los blocks de las subclase:
     def draw(self, screen):
-        slots = self._cells[self._rotation]
+        slots = self.get_cell_position()
 
         # Generamos el cuadrado de la celda
         for slot in slots:

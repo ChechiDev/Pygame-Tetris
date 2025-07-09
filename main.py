@@ -11,7 +11,7 @@ from blocks import *
 pygame.init()
 
 # Game colors:
-screen_color = (44, 44, 127) # Black, dark-blue = (44, 44, 127)
+screen_color = (44, 44, 127) # Black, dark-blue = (44, 44, 127), dark-grey (26, 31, 40)
 
 # Configuramos el tamaño de la ventana del juego
 screen = pygame.display.set_mode((300, 600))
@@ -22,12 +22,14 @@ pygame.display.set_caption("Python Tetris")
 # Creamos un reloj para controlar la velocidad del juego (FPS)
 clock = pygame.time.Clock()
 
+# Testing:
 # Creamos instancia a Grid:
 gg = Grid()
 gg.print_grid()
 
 # Creamos el obj Blocks, para probar si se dibujan:
-block = SBlock()
+block = OBlock()
+block.move(4,3) # Movemos el block a otra posicion
 # block = ZBlock()
 
 

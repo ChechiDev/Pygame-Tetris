@@ -28,6 +28,7 @@ class Grid:
 
 
     def draw(self, screen): # Dibujamos el rectangulo de 'RECT'
+        """ Draws the grid cells as rectangles on the given screen surface """
 
         for r in range(self._row):
             for c in range(self._col):

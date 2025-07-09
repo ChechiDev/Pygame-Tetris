@@ -23,7 +23,20 @@ clock = pygame.time.Clock()
 
 # Creamos instancia a Grid:
 gg = Grid()
+
+# Test del grid para ver si los index cambian el color:
+# gg._grid[0][0] = 1
+# gg._grid[3][5] = 4
+# gg._grid[17][8] = 7
+
+
+
+
+
+
+
 gg.print_grid()
+
 
 # Loop principal del juego:
 # Se ejecuta constantemente hasta que el usuario cierre la ventana

@@ -3,6 +3,7 @@
 import pprint
 import os
 import pygame
+from colors import Colors
 
 class Grid:
     """ Class representing the Tetris game grid """
@@ -15,7 +16,7 @@ class Grid:
         # Creamos el grid
         self._grid = [[0 for _ in range(self._col)] for _ in range(self._row)]
         # Necesitamos saber los colores de las celdas:
-        self._colors = self.get_cell_colors()
+        self._colors = Colors.get_cell_colors()
 
 
     # Dibujamos el grid:
@@ -26,21 +27,6 @@ class Grid:
             print(" ".join(str(cell) for cell in r)) # Printamos los 0 de cada  fila del grid con salto de linea.
 
 
-    def get_cell_colors(self):
-        """Return a list of cell colors."""
-
-        dark_grey = (26, 31, 40)
-        green = (47, 230, 23)
-        red = (232, 18, 18)
-        orange = (226, 116, 17)
-        yellow = (237, 234, 4)
-        purple = (166, 0, 247)
-        cyan = (21, 204, 209)
-        blue = (13, 64, 216)
-
-        return [dark_grey, green, red, orange, yellow, purple, cyan, blue]
-
-
     def draw(self, screen): # Dibujamos el rectangulo de 'RECT'
 
         for r in range(self._row):
@@ -49,6 +35,7 @@ class Grid:
 
                 # Dibujamos el objeto 'RECT' (el cuadrado que delimita la cell)
                 # (x, y, w, h) => | x = col * tamaño de celda, y = row  * tamaño de celda, w(width) = tamaño de celda, h(height) = tamaño de celda
+                # Reducimos 1px por cada lado con offset para que las lineas del grid sean visibles
                 cell_rect = pygame.Rect(
                     c * self._cell_size + 1, # col, agregamos + 1 para agregar 1px offset (en total c tiene 31px)
                     r * self._cell_size + 1, # row, agregamos + 1 para agregar 1px offset

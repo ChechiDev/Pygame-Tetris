@@ -36,3 +36,9 @@ class Game():
         self._blocks.remove(block) # Lo eliminamos de la lista para que no se repita o no esté disponible
 
         return block
+
+
+    def draw(self, screen):
+
+        self._grid.draw(screen)
+        self._current_block.draw(screen)

@@ -1,12 +1,14 @@
 # grid.py
 
 import pygame
-from colors import Colors
+from .colors import Colors
 
 class Grid:
     """ Class representing the Tetris game grid """
+
     def __init__(self):
         """ Initialize with attr:grid size, cell size, and colors """
+
         # Lo primero que tenemos que saber del grid: rows, columns
         self._row = 30
         self._col = 10
@@ -18,7 +20,7 @@ class Grid:
 
 
     # Dibujamos el grid:
-    def print_grid(self):
+    def print_grid(self) -> None:
         """ Print the grid """
 
         for r in self._grid:
@@ -26,14 +28,19 @@ class Grid:
 
 
     # Colition wall checker
-    def is_inside(self, row, col):
+    def is_inside(self, row: int, col: int) -> bool:
+        """
+        Check if the given row and column are inside the grid boundaries.
+        Return:
+            True if inside, False otherwise.
+        """
         if row >= 0 and row < self._row and col >= 0 and col < self._col:
             return True
 
         return False
 
 
-    def draw(self, screen): # Dibujamos el rectangulo de 'RECT'
+    def draw(self, screen) -> None: # Dibujamos el rectangulo de 'RECT'
         """ Draws the grid cells as rectangles on the given screen surface """
 
         for r in range(self._row):

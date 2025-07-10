@@ -4,8 +4,8 @@
 # pygame: para crear el juego y manejar gráficos, eventos, etc.
 # sys: para poder cerrar el programa completamente
 import pygame, sys
-from config import *
-from game import Game
+from cfg.config import *
+from core.game import Game
 
 # Inicializamos todos los módulos de Pygame
 pygame.init()
@@ -42,7 +42,7 @@ while True:
             if event.key == pygame.K_DOWN:
                 game.move_down()
 
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_UP or event.key == pygame.K_SPACE:
                 game.rotate()
 
 

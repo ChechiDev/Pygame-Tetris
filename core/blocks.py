@@ -1,7 +1,7 @@
 # blocks.py
 
-from block import Block
-from position import Position
+from .block import Block
+from .position import Position
 
 # Subclase heredada de Block, para configurar la pieza y rotación
 class LBlock(Block):

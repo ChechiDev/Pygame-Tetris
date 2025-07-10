@@ -1,6 +1,7 @@
-# Colors.py
+# colors.py
 
 class Colors:
+    """ Class containing color definitions for the Tetris game blocks and background """
 
     dark_grey = (26, 31, 40)
     green = (47, 230, 23)
@@ -13,6 +14,8 @@ class Colors:
 
     @classmethod
     def get_cell_colors(cls):
+        """ Return a list of all block colors in the order used by the game """
+
         return [
             cls.dark_grey,
             cls.green,

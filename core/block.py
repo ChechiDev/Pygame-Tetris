@@ -1,8 +1,8 @@
 # block.py
 
 import pygame
-from colors import Colors
-from position import Position
+from .colors import Colors
+from .position import Position
 
 class Block:
     def __init__(self, id):
@@ -15,15 +15,16 @@ class Block:
         self._colors = Colors.get_cell_colors()
 
 
-    def move(self, rows, cols):
+    def move(self, rows: int, cols: int) -> None:
         """ Move the block by a given (arg) number of rows and columns """
 
         self._row_offset += rows
         self._col_offset += cols
 
 
-    def get_cell_position(self):
+    def get_cell_position(self) -> list[Position]:
         """ Get the current cell positions for the block's rotation """
+
         slot = self._cells[self._rotation]
         moved_pos = []
 
@@ -37,7 +38,7 @@ class Block:
         return moved_pos
 
 
-    def rotate(self):
+    def rotate(self) -> None:
         self._rotation += 1
 
         # Si rotamos todos los lados (len(cells)) del block, reiniciamos a 0
@@ -45,8 +46,17 @@ class Block:
             self._rotation = 0
 
 
+    def undo_rotate(self) -> None:
+        """ Undo the last rotation, cycling to the last rotation if needed """
+
+        self._rotation -= 1
+
+        if self._rotation == 0:
+            self._rotation = len(self._cells) - 1
+
     # Metodo que se encargará de dibujar los blocks de las subclase:
-    def draw(self, screen):
+    def draw(self, screen) -> None:
+        """ Draw the block on the given screen surface """
         slots = self.get_cell_position()
 
         # Generamos el cuadrado de la celda

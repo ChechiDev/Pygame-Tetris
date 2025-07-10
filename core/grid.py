@@ -10,7 +10,7 @@ class Grid:
         """ Initialize with attr:grid size, cell size, and colors """
 
         # Lo primero que tenemos que saber del grid: rows, columns
-        self._row = 30
+        self._row = 20
         self._col = 10
         self._cell_size = 30 # valor en px para la celda
         # Creamos el grid
@@ -27,14 +27,14 @@ class Grid:
             print(" ".join(str(cell) for cell in r)) # Printamos los 0 de cada  fila del grid con salto de linea.
 
 
-    # Colition wall checker
+    # Colition boundary checker
     def is_inside(self, row: int, col: int) -> bool:
         """
         Check if the given row and column are inside the grid boundaries.
         Return:
             True if inside, False otherwise.
         """
-        if row >= 0 and row < self._row and col >= 0 and col < self._col:
+        if (row >= 0 and row < self._row) and (col >= 0 and col < self._col):
             return True
 
         return False

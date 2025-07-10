@@ -49,6 +49,7 @@ while True:
     # Drawing screen fill
     screen.fill(BACKGROUND_COLOR)
     game.draw(screen)
+    game.move_down() # Testing
 
     # Actualizamos la pantalla para mostrar cualquier cambio realizado en la ventana
     pygame.display.update()

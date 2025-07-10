@@ -46,13 +46,15 @@ class Block:
             self._rotation = 0
 
 
+    # Método para impedir que rote cuando hay pared
     def undo_rotate(self) -> None:
         """ Undo the last rotation, cycling to the last rotation if needed """
 
         self._rotation -= 1
 
-        if self._rotation == 0:
+        if self._rotation == -1:
             self._rotation = len(self._cells) - 1
+
 
     # Metodo que se encargará de dibujar los blocks de las subclase:
     def draw(self, screen) -> None:

@@ -64,6 +64,10 @@ class Game():
             self._current_block.move(-1, 0)
 
 
+    def rotate(self):
+        self._current_block.rotate()
+
+
     def block_inside(self):
         """ Check if the current block is inside the grid boundaries """
 

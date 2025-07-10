@@ -37,6 +37,14 @@ class Block:
         return moved_pos
 
 
+    def rotate(self):
+        self._rotation += 1
+
+        # Si rotamos todos los lados (len(cells)) del block, reiniciamos a 0
+        if self._rotation == len(self._cells):
+            self._rotation = 0
+
+
     # Metodo que se encargará de dibujar los blocks de las subclase:
     def draw(self, screen):
         slots = self.get_cell_position()

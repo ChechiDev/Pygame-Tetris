@@ -1,7 +1,5 @@
 # grid.py
 
-import pprint
-import os
 import pygame
 from colors import Colors
 
@@ -27,6 +25,14 @@ class Grid:
             print(" ".join(str(cell) for cell in r)) # Printamos los 0 de cada  fila del grid con salto de linea.
 
 
+    # Colition wall checker
+    def is_inside(self, row, col):
+        if row >= 0 and row < self._row and col >= 0 and col < self._col:
+            return True
+
+        return False
+
+
     def draw(self, screen): # Dibujamos el rectangulo de 'RECT'
         """ Draws the grid cells as rectangles on the given screen surface """
 
@@ -46,9 +52,3 @@ class Grid:
 
                 # importamos el pygame.rect(3 args => (surface(screen de la pantalla), color(lista de colores), rect))
                 pygame.draw.rect(screen, self._colors[cell_value], cell_rect)
-
-
-if __name__ == "__main__":
-    os.system("cls")
-    g = Grid()
-    g.draw()

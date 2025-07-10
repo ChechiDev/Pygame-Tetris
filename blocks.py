@@ -6,7 +6,7 @@ from position import Position
 # Subclase heredada de Block, para configurar la pieza y rotación
 class LBlock(Block):
     def __init__(self):
-        super().__init__(id = 1)
+        super().__init__(id = 1) # id único de cada pieza
 
         self._cells = {
             0: [Position(0, 2), Position(1, 0), Position(1, 1), Position(1, 2)],

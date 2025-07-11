@@ -62,6 +62,25 @@ class Game():
 
         if self.block_inside() == False:
             self._current_block.move(-1, 0)
+            self.lock_block() # Si está bloqueado generamos block nuevo
+
+
+    def lock_block(self):
+        """
+        Locks the current block in place by saving its cell positions to the grid.
+        After locking, sets the next block as the current block and generates a new next block.
+        """
+        slots = self._current_block.get_cell_position()
+
+        # Guardamos la posición de cada cell del block actual en el grid, usando su id
+        for pos in slots:
+            self._grid._grid[pos._row][pos._col] = self._current_block._id
+
+        # Si llegamos a aqui es porque la posición del block anterior está bloqueada
+        # Cambiamos el current_block por el siguiente y generamos un nuevo block random
+        self._current_block = self._next_block
+        self._next_block = self.get_rdm_block()
+
 
 
     def block_inside(self) -> bool:

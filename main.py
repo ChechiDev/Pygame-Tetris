@@ -19,6 +19,10 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
 game = Game()
 
+# Event personalizado para el movimiento automático hacia abajo
+GAME_UPDATE = pygame.USEREVENT
+pygame.time.set_timer(GAME_UPDATE, 200) # Trigger(event, time in milisencond)
+
 # Loop principal del juego:
 # Se ejecuta constantemente hasta que el usuario cierre la ventana
 while True:
@@ -45,11 +49,13 @@ while True:
             if event.key == pygame.K_UP or event.key == pygame.K_SPACE:
                 game.rotate()
 
+        if event.type == GAME_UPDATE: # Checkeamos si event es GAME_UPDATE:
+            game.move_down()
+
 
     # Drawing screen fill
     screen.fill(BACKGROUND_COLOR)
     game.draw(screen)
-    game.move_down() # Testing
 
     # Actualizamos la pantalla para mostrar cualquier cambio realizado en la ventana
     pygame.display.update()

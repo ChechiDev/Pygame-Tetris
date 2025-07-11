@@ -34,7 +34,19 @@ class Grid:
         Return:
             True if inside, False otherwise.
         """
+
+        # Check para ver si la pieza está dentro del grid
         if (row >= 0 and row < self._row) and (col >= 0 and col < self._col):
+            return True
+
+        return False
+
+
+    def is_empty(self, row, col):
+        """ Return True if the specified cell is empty (value == 0) """
+
+        # Checkeamos si la posicion del grid es 0
+        if self._grid[row][col] == 0:
             return True
 
         return False

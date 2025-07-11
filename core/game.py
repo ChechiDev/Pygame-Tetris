@@ -31,6 +31,8 @@ class Game():
     def get_rdm_block(self) -> Block:
         """ Returns a random block and removes it from the available blocks list """
 
+        # Si no quedan bloques disponibles en la lista:
+        # reiniciamos para volver a tener todos los bloques
         if len(self._blocks) == 0:
             self._reset_blocks()
 
@@ -42,6 +44,7 @@ class Game():
 
     def move_left(self) -> None:
         """ Move the current block one cell to the left """
+
         self._current_block.move(0, -1)
 
         if self.block_inside() == False:
@@ -50,6 +53,7 @@ class Game():
 
     def move_right(self) -> None:
         """ Move the current block one cell to the right """
+
         self._current_block.move(0, 1)
 
         if self.block_inside() == False:
@@ -58,9 +62,12 @@ class Game():
 
     def move_down(self) -> None:
         """ Move the current block one cell down """
+
         self._current_block.move(1, 0)
 
-        if self.block_inside() == False:
+        # Si el current_block se sale del grid o no cabe en la posición nueva,
+        # lo devolvemos a la posición anterior y lo bloqueamos en el grid
+        if self.block_inside() == False or self.block_fits() == False:
             self._current_block.move(-1, 0)
             self.lock_block() # Si está bloqueado generamos block nuevo
 
@@ -70,6 +77,8 @@ class Game():
         Locks the current block in place by saving its cell positions to the grid.
         After locking, sets the next block as the current block and generates a new next block.
         """
+
+         # Obtenemos todas las posiciones que ocupa el bloque actual
         slots = self._current_block.get_cell_position()
 
         # Guardamos la posición de cada cell del block actual en el grid, usando su id
@@ -81,6 +90,20 @@ class Game():
         self._current_block = self._next_block
         self._next_block = self.get_rdm_block()
 
+
+    def block_fits(self):
+        """ Return True if all cells of the current block fit in empty grid positions """
+
+        # Obtenemos todas las posiciones que ocupa el bloque actual
+        slots = self._current_block.get_cell_position()
+
+        # Recorremos cada celda del bloque
+        for slot in slots:
+            # Si alguna celda no está vacía en el grid, el bloque no cabe
+            if self._grid.is_empty(slot._row, slot._col) == False:
+                return False
+
+        return True
 
 
     def block_inside(self) -> bool:

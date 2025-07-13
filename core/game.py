@@ -47,7 +47,7 @@ class Game():
 
         self._current_block.move(0, -1)
 
-        if self.block_inside() == False:
+        if self.block_inside() == False or self.block_fits() == False:
             self._current_block.move(0, 1) # Si se retorna false, devolvemos la pieza a la posición anterior
 
 
@@ -56,7 +56,7 @@ class Game():
 
         self._current_block.move(0, 1)
 
-        if self.block_inside() == False:
+        if self.block_inside() == False  or self.block_fits() == False:
             self._current_block.move(0, -1)
 
 
@@ -120,7 +120,7 @@ class Game():
 
         self._current_block.rotate()
 
-        if self.block_inside() == False:
+        if self.block_inside() == False  or self.block_fits() == False:
             self._current_block.undo_rotate()
 
 

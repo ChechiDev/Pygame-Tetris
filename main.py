@@ -49,7 +49,7 @@ while True:
             if event.key == pygame.K_UP or event.key == pygame.K_SPACE:
                 game.rotate()
 
-        if event.type == GAME_UPDATE: # Checkeamos si event es GAME_UPDATE:
+        if event.type == GAME_UPDATE: # Check amos si event es GAME_UPDATE:
             game.move_down()
 
 

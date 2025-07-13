@@ -37,6 +37,11 @@ while True:
 
         # Configuramos el movimiento (arrow keys)
         if event.type == pygame.KEYDOWN:
+            # Checkeamos si game over si es true => False y reset:
+            if game._game_over == True:
+                game._game_over = False
+                game.reset()
+
             if event.key == pygame.K_LEFT  and game._game_over == False:
                 game.move_left()
 

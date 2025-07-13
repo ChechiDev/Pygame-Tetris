@@ -99,6 +99,14 @@ class Grid:
         return check_full
 
 
+    def reset(self):
+        """ Resets the grid by setting all cells to zero (0 = empty)"""
+
+        for row in range(self._row):
+            for col in range(self._col):
+                self.grid[row][col] = 0
+
+
     def draw(self, screen) -> None: # Dibujamos el rectangulo de 'RECT'
         """ Draws the grid cells as rectangles on the given screen surface """
 

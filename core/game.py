@@ -98,6 +98,22 @@ class Game():
 
 
 
+    def reset(self):
+        """
+        Resets the game state by clearing the grid, reinitializing the block list,
+        and selecting new current and next blocks
+        """
+
+        self._grid.reset()
+        self._blocks = [
+            IBlock(), JBlock(), LBlock(),
+            OBlock(), SBlock(), TBlock(),
+            ZBlock()
+        ]
+        self._current_block = self.get_rdm_block()
+        self._next_block = self.get_rdm_block()
+
+
     def block_fits(self):
         """ Return True if all cells of the current block fit in empty grid positions """
 

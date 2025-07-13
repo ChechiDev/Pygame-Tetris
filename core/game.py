@@ -16,6 +16,7 @@ class Game():
         ]
         self._current_block = self.get_rdm_block() # Escoge el block actual
         self._next_block = self.get_rdm_block() # Escoge el siguiente block
+        self._game_over = False
 
 
     def _reset_blocks(self) -> None:
@@ -90,6 +91,11 @@ class Game():
         self._current_block = self._next_block
         self._next_block = self.get_rdm_block()
         self._grid.clear_all_rows()
+
+        # Si el block no cabe en el grid: Kill! Game over!
+        if self.block_fits() == False:
+            self._game_over = True
+
 
 
     def block_fits(self):

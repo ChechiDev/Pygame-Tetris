@@ -37,19 +37,19 @@ while True:
 
         # Configuramos el movimiento (arrow keys)
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_LEFT  and game._game_over == False:
                 game.move_left()
 
-            if event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_RIGHT and game._game_over == False:
                 game.move_right()
 
-            if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_DOWN and game._game_over == False:
                 game.move_down()
 
-            if event.key == pygame.K_UP or event.key == pygame.K_SPACE:
+            if (event.key == pygame.K_UP or event.key == pygame.K_SPACE)  and game._game_over == False:
                 game.rotate()
 
-        if event.type == GAME_UPDATE: # Check amos si event es GAME_UPDATE:
+        if event.type == GAME_UPDATE and game._game_over == False: # Check amos si event es GAME_UPDATE o Game over:
             game.move_down()
 
 

@@ -89,6 +89,7 @@ class Game():
         # Cambiamos el current_block por el siguiente y generamos un nuevo block random
         self._current_block = self._next_block
         self._next_block = self.get_rdm_block()
+        self._grid.clear_all_rows()
 
 
     def block_fits(self):

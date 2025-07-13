@@ -42,7 +42,7 @@ class Grid:
         return False
 
 
-    def is_empty(self, row, col):
+    def is_empty(self, row: int, col: int) -> bool:
         """ Return True if the specified cell is empty (value == 0) """
 
         # Checkeamos si la posicion del grid es 0
@@ -50,6 +50,53 @@ class Grid:
             return True
 
         return False
+
+
+    def is_row_full(self, row: int) -> bool:
+
+        # Recorremos todas las col de cada row:
+        for col in range(self._col):
+            # check para comprobar si la fila está completa:
+            if self._grid[row][col] == 0:
+                return False
+
+        return True
+
+
+    def clear_row(self, row: int) -> None:
+
+        # Loop para poner la cell en 0
+        for col in range(self._col):
+            self._grid[row][col] = 0
+
+
+    def set_row_down(self, row: int, num_rows: int) -> None:
+
+        # Movemos la row indicada según el num_rows
+        for col in range(self._col):
+            # Copiamos los valores de cada row a la nueva poscion
+            self._grid[row + num_rows][col] = self._grid[row][col]
+            # Reset de la celda inicial a 0 (reset)
+            self._grid[row][col] = 0
+
+
+    def clear_all_rows(self) -> None:
+
+        # Contador de filas completadas (full)
+        check_full = 0
+        # Check de todas las filas (abajo a arriba)
+        for  row in range(self._row -1, 0, -1):
+            # Si la row está full, limpiamos y sumamos check_full
+            if self.is_row_full(row):
+                self.clear_row(row)
+                check_full += 1
+
+            # si hay alguna row full, bajamos las rows superiores
+            elif check_full > 0:
+                self.set_row_down(row, check_full)
+
+        # Retornamos el num de filas eliminadas
+        return check_full
 
 
     def draw(self, screen) -> None: # Dibujamos el rectangulo de 'RECT'
